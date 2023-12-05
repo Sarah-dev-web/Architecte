@@ -205,7 +205,7 @@ footer nav ul {
 .boutons-filtres {
     background-color: white;
     color: #1D6154;
-    border-color: #1D6154;
+	border: 1px solid #1D6154;
     border-radius: 60px;
     font-family: 'Syne';
     font-style: normal;
@@ -218,6 +218,12 @@ footer nav ul {
     min-width: 100px;
     padding-left: 10px;
     padding-right: 10px;
+
+	
+}
+.btn-actif{
+	background-color: #1D6154;
+	color: white;
 }
 
 .black-background{
@@ -249,3 +255,7 @@ footer nav ul {
 		}
 	
 }
+/*figure img{
+	width :205px;
+	height:274px;
+}*/
