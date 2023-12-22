@@ -1,4 +1,5 @@
 let galleryHtml = document.querySelector(".gallery")
+let galleryModalHtml = document.querySelector(".gallery-modal")
 let filtresHtml = document.querySelector(".Filtres")
 
 async function getAllWorks(){
@@ -20,6 +21,7 @@ getAllWorks().then((works)=>{
 
 function shoWorks(arrayOfWorks){
     let worksHtml = ""
+    let modalElementHtml = ""
     arrayOfWorks.forEach(work => {
         worksHtml += `
         <figure>
@@ -27,8 +29,16 @@ function shoWorks(arrayOfWorks){
 				<figcaption>${work.title}</figcaption>
 			</figure>
         `
+        modalElementHtml += `
+        <figure class="img-trash">
+                <span onclick="deleteWorkbyId(${work.id})" class="trash"><i class="fa-solid fa-trash-can"></i></span>
+			    <span><img src="${work.imageUrl}" alt="${work.title}"></span>
+			</figure>
+        `
+        
     });
     galleryHtml.innerHTML = worksHtml
+    galleryModalHtml.innerHTML = modalElementHtml
     
 }
 
@@ -52,3 +62,12 @@ function showCategories(arrayOfCategories){
 
 }
 
+function deleteWorkbyId(workid){
+    fetch('http://localhost:5678/api/works/'+workid, { method: 'DELETE' })
+    .then(() =>{
+        alert('The work is deleted')
+        getAllWorks().then((works)=>{
+            shoWorks(works)
+        })
+    });
+}
