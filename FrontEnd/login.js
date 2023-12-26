@@ -5,7 +5,8 @@ async function loginUser(paramemail, parampassword) {
       const options = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ paramemail, parampassword }),
+        body: JSON.stringify({email: paramemail, password: parampassword}),
+        
         
       };
     
@@ -34,7 +35,7 @@ async function Login(event) {
     console.log(password);
     try {
         await loginUser(email, password);
-        //window.location.href = "index.html"; // redirige l'utilisateur vers la page d'accueil
+        window.location.href = "index.html"; // redirige l'utilisateur vers la page d'accueil
       } catch (error) {
         document.querySelector('.login-error').textContent = error.message;
       }
