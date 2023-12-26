@@ -26,14 +26,16 @@
 <main>
     <section id="Login">
 		<h2>Log In</h2>
-		<form action="#" method="post">
+		<form> 
 			<label for="email">E-mail</label>
 			<input type="email" name="email" id="email">
 			<label for="mdp">Mot de passe</label>
-			<input type="mdp" name="Mot de passe" id="mdp">
-            <input type="submit" value="Se connecter">
+			<input type="password" name="Mot de passe" id="mdp">
+            <input type="submit" value="Se connecter" id="Login-button">
             <a href="#">Mot de passe oublié</a>
+            
 		</form>
+        <div class="login-error"></div>
 	</section>
 </main>
 <footer class="login-footer">
