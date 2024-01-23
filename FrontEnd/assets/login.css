@@ -197,5 +197,15 @@ footer{
 	
 }
 
-
-
+.login a{
+	text-decoration: none;
+	cursor: pointer;
+	color: black;
+}
+.logout{
+	display: none;
+	cursor: pointer;
+}
+.login{
+	display: block;
+}

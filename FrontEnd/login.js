@@ -21,7 +21,7 @@ async function loginUser(paramemail, parampassword) {
       // Récupère le token d'authentification et le stocke dans le localStorage
       const data = await response.json();
       console.log(data)
-      //localStorage.setItem('authToken', data.token);
+      localStorage.setItem('loginToken', data.token);
     
     };
 async function Login(event) {
@@ -31,25 +31,14 @@ async function Login(event) {
     let email = document.getElementById('email').value;
     let password = document.getElementById('mdp').value;
 
-    console.log(email);
-    console.log(password);
+  
     try {
         await loginUser(email, password);
         window.location.href = "index.html"; // redirige l'utilisateur vers la page d'accueil
       } catch (error) {
         document.querySelector('.login-error').textContent = error.message;
       }
-    // Vérifier les identifiants (exemple simple, à remplacer par une vérification côté serveur)
-   /* if (email === 'sophie.bluel@test.tld' && password === 'S0phie') {
-        // Authentification réussie
-        alert('Connexion réussie !');
 
-        // Rediriger vers la page du site avec des boutons d'actions
-        window.location.href = 'index.html';
-    } else {
-        // Afficher un message d'erreur si les identifiants sont incorrects
-        alert('Erreur dans l’identifiant ou le mot de passe');
-    }*/
 }
 
 // Ajouter un écouteur d'événements pour le formulaire

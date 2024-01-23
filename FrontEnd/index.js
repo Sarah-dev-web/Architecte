@@ -1,11 +1,41 @@
 let galleryHtml = document.querySelector(".gallery")
 let galleryModalHtml = document.querySelector(".gallery-modal")
 let filtresHtml = document.querySelector(".Filtres")
+let modeEditionHtml = document.querySelectorAll(".bouton-modifier")
+let loginHtml = document.querySelector(".login")
+let logoutHtml = document.querySelector(".logout")
+const tokenExist = isTokenExist();
+let allWorks = []
 
+function isConnected(){
+    if(tokenExist){
+        console.log(modeEditionHtml)
+        modeEditionHtml.forEach(btn=>{
+            btn.style.display = "flex"
+        })
+        filtresHtml.style.display = "none"
+        loginHtml.style.display = "none"
+        logoutHtml.style.display = "flex"
+    }
+}
+function isDeconnected(){
+    if(tokenExist){
+        deleteToken()
+        console.log(modeEditionHtml)
+        modeEditionHtml.forEach(btn=>{
+            btn.style.display = "none"
+        })
+        filtresHtml.style.display = "flex"
+        loginHtml.style.display = "flex"
+        logoutHtml.style.display = "none"
+    }
+}
+logoutHtml.addEventListener("click", isDeconnected)
+isConnected()
 async function getAllWorks(){
     const response = await fetch("http://localhost:5678/api/works")
-    let allWorks = response.json()
-    return allWorks;
+    let works = response.json()
+    return works;
 }
 async function getCategories(){
     const response = await fetch("http://localhost:5678/api/categories")
@@ -16,6 +46,7 @@ getCategories().then((categories)=>{
     showCategories(categories)
 })
 getAllWorks().then((works)=>{
+    allWorks = [...works]
     shoWorks(works)
 })
 
@@ -54,20 +85,80 @@ function showCategories(arrayOfCategories){
     });
     filtresHtml.innerHTML = categoriesHtml
     let boutonsFiltresHtml = document.querySelectorAll(".boutons-filtres")
-    boutonsFiltresHtml.forEach((btn)=>{
+    boutonsFiltresHtml.forEach((btn,index)=>{
         btn.addEventListener("click",function(e){
-            console.log(e.target.textContent)
+            let filtersWorks = allWorks.filter(wk=>wk.categoryId == index)
+            shoWorks(filtersWorks)
+            console.log(filtersWorks)
         })
     })
 
 }
 
 function deleteWorkbyId(workid){
-    fetch('http://localhost:5678/api/works/'+workid, { method: 'DELETE' })
+    let userToken = window.localStorage.getItem("loginToken");
+    let bearer = "Bearer " + userToken;
+    let httpOptions = "";
+
+    if (userToken !== null) {
+        const headersContent = {
+            "Accept": "*/*",
+            "Authorization": bearer,
+        };
+        const headers = new Headers(headersContent);
+        httpOptions = {
+            method: "DELETE",
+            headers: headers
+        };
+    }
+    fetch('http://localhost:5678/api/works/'+workid, httpOptions)
     .then(() =>{
-        alert('The work is deleted')
+        //alert('The work is deleted')
         getAllWorks().then((works)=>{
             shoWorks(works)
         })
     });
 }
+
+function isTokenExist(){
+    const token = localStorage.getItem('loginToken')
+    console.log(token)
+    if (token){
+        return true;
+    }else{
+        return false;
+    }
+}
+function deleteToken(){
+    const token = localStorage.getItem('loginToken')
+    console.log(token)
+    if (token){
+        localStorage.removeItem('loginToken')
+    }
+}
+
+
+
+         
+async function addWork(FormData) {
+    let storedToken = window.localStorage.getItem("appToken");
+    let bearer = "Bearer " + storedToken;
+    let httpOptions = "";
+
+    if (storedToken !== null) {
+        const headersContent = {
+            "Accept": "*/*",
+            "Authorization": bearer,
+        };
+        const headers = new Headers(headersContent);
+        httpOptions = {
+            method: "POST",
+            headers: headers,
+            body: FormData
+        };
+    }
+    
+const response = await fetch("http://localhost:5678/api/works", httpOptions);
+        console.log(response.status);
+        return response;
+       }
