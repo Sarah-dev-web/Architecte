@@ -298,16 +298,35 @@ footer nav ul {
 		}
 	
 }
+.bouton2-modifier{
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+.btn-modifier-modal{
+	display: none;
+}
 
 .modal{
-	visibility: hidden;
-	opacity: 0;
+	
+	
 	position: absolute;
 	top: 0;
 	bottom: -2490px;
 	left:0;
 	right: 0;
-	display: flex;
+	display: none;
+	justify-content: center;
+	align-items: center;
+	background-color: rgba(77, 77, 77, 0.1);
+}
+.modal2{
+	position: absolute;
+	top: 0;
+	bottom: -2490px;
+	left:0;
+	right: 0;
+	display: none;
 	justify-content: center;
 	align-items: center;
 	background-color: rgba(77, 77, 77, 0.1);

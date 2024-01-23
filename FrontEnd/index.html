@@ -45,11 +45,11 @@
 		</article>
 	</section>
 	<section id="portfolio">
-		<div class="bouton-modifier">
+		<div class="bouton2-modifier">
 		<h2>Mes Projets</h2>
-		<a href="#demo">
+		<div class="btn-modifier-modal">
 			<i class="fa-regular fa-pen-to-square"></i>modifier
-		</a>
+		</div>
 		<div id="demo" class="modal">
 			<div class="modal_content">
 				<a href="#" class="modal_close">&times;</a>
@@ -57,12 +57,59 @@
 				<div class="gallery-modal">
 			
 				</div>
-				<form action="#" method="post">
-					<input type="submit" value="Ajouter une photo">
-				</form>
+				
+					<input type="button" value="Ajouter une photo" class="btn-showmodal-nework">
+				
 				
 			</div>
 		</div>
+
+		<div id="demo" class="modal2">
+			<div class="modal_content">
+				<a href="#" class="modal_close">&times;</a>
+				<h2 class="titre-modal">Galerie photo</h2>
+				
+				
+					<input type="button" value="Ajouter une photo" class="btn-showmodal-nework">
+				
+				
+			</div>
+		</div>
+
+
+		<!--<div class="modal-container-ajout">
+			<div class="overlay modal-trigger-ajout"></div>
+			<div class="modal2">
+				<button class="close-modal modal-trigger-ajout">x</button>
+				<button class="row-modal modal-trigger"><img src="assets/icons/arrow-left.png" alt=""></button>
+				<h3>Ajout photo</h3>
+				<div class="ajout-photo">
+					<div class="ajout-photo-before">
+						<img src="assets/icons/icone-photo.jpg">
+						<button id="ajouterPhotoBtn">+ Ajouter une photo</button>
+						<p>jpg, png : 4mo max</p>
+					</div>
+					<div class="ajout-photo-after">
+					</div>
+				</div>
+				<form id="formPhoto" enctype="multipart/form-data" method="post">
+					<input type="file" name="image" id="inputPhoto" style="display: none" accept="image/png, image/jpeg" size="32000000" hidden required>
+					<label for="name">Titre</label>
+					<input type="text" name="name" id="nameModal" class="input-photo" autocomplete="photo">
+					<label for="categorieSelect">Catégorie</label>
+					<select name="categorieModal" id="categorieSelect" class="input-photo">
+						<option value=""></option>
+						<option value=0>Tous</option>
+						<option value=1>Objets</option>
+						<option value=2>Appartements</option>
+						<option value=3>Hôtels & restaurants</option>
+					</select>
+					<input type="submit" value="Valider" class="input-modal validation-photo">
+				</form>
+			</div>
+		</div>
+	-->
+
 	</div>
 	
 		<div class="Filtres">

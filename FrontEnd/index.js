@@ -1,33 +1,33 @@
 let galleryHtml = document.querySelector(".gallery")
 let galleryModalHtml = document.querySelector(".gallery-modal")
 let filtresHtml = document.querySelector(".Filtres")
-let modeEditionHtml = document.querySelectorAll(".bouton-modifier")
+let modeEditionHtml = document.querySelector(".bouton-modifier")
 let loginHtml = document.querySelector(".login")
 let logoutHtml = document.querySelector(".logout")
+let BtnmodalAdd = document.querySelector(".btn-showmodal-nework")
+let BtnModifierModal = document.querySelector(".btn-modifier-modal")
 const tokenExist = isTokenExist();
 let allWorks = []
 
 function isConnected(){
     if(tokenExist){
         console.log(modeEditionHtml)
-        modeEditionHtml.forEach(btn=>{
-            btn.style.display = "flex"
-        })
+        modeEditionHtml.style.display = "flex"
         filtresHtml.style.display = "none"
         loginHtml.style.display = "none"
         logoutHtml.style.display = "flex"
+        BtnModifierModal.style.display = "block"
     }
 }
 function isDeconnected(){
     if(tokenExist){
         deleteToken()
         console.log(modeEditionHtml)
-        modeEditionHtml.forEach(btn=>{
-            btn.style.display = "none"
-        })
+        modeEditionHtml.style.display = "none"
         filtresHtml.style.display = "flex"
         loginHtml.style.display = "flex"
         logoutHtml.style.display = "none"
+        BtnModifierModal.style.display = "none"
     }
 }
 logoutHtml.addEventListener("click", isDeconnected)
@@ -113,7 +113,7 @@ function deleteWorkbyId(workid){
     }
     fetch('http://localhost:5678/api/works/'+workid, httpOptions)
     .then(() =>{
-        //alert('The work is deleted')
+        alert('The work is deleted')
         getAllWorks().then((works)=>{
             shoWorks(works)
         })
@@ -162,3 +162,12 @@ const response = await fetch("http://localhost:5678/api/works", httpOptions);
         console.log(response.status);
         return response;
        }
+
+BtnmodalAdd.addEventListener("click",function(){
+    document.querySelector(".modal").style.display="none"
+    document.querySelector(".modal2").style.display="flex"
+})
+BtnModifierModal.addEventListener("click",function(){
+    document.querySelector(".modal").style.display="flex"
+    console.log("hello")
+})
