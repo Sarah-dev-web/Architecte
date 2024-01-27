@@ -57,9 +57,9 @@
 				<div class="gallery-modal">
 				
 				</div>
-				
-					<input type="submit" value="Ajouter une photo" class="input-modal modal-trigger-ajout">
-				
+					<div class="modal-border1">
+						<input type="submit" value="Ajouter une photo" class="input-modal modal-trigger-ajout">
+					</div>
 				
 			</div>
 		</div>
@@ -79,6 +79,8 @@
 					<div class="ajout-photo-after">
 					</div>
 				</div>
+
+				
 				<form id="formPhoto" enctype="multipart/form-data" method="post">
 					<input type="file" name="image" id="inputPhoto" style="display: none" accept="image/png, image/jpeg" size="32000000" hidden required>
 					<label for="name">Titre</label>
@@ -91,9 +93,11 @@
 						<option value=2>Appartements</option>
 						<option value=3>Hôtels & restaurants</option>
 					</select>
+					<div class="modal-border2">
 					<input type="submit" value="Valider" class="input-modal validation-photo">
+				</div>
 				</form>
-				
+			
 				
 				
 			</div>
