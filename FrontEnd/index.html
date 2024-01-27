@@ -27,7 +27,7 @@
 			<li>contact</li>
 			<li class="login"><a href="login.html">login</a></li>
 			<li class="logout">logout</li>
-			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
+			<li><img src="./assets/icons/instagram.png" alt="Instagram" class="instagram"></li>
 		</ul>
 	</nav>
 </header>
@@ -50,39 +50,26 @@
 		<div class="btn-modifier-modal">
 			<i class="fa-regular fa-pen-to-square"></i>modifier
 		</div>
-		<div id="demo" class="modal">
+		<div class="modal">
 			<div class="modal_content">
 				<a href="#" class="modal_close">&times;</a>
 				<h2 class="titre-modal">Galerie photo</h2>
 				<div class="gallery-modal">
-			
+				
 				</div>
 				
-					<input type="button" value="Ajouter une photo" class="btn-showmodal-nework">
+					<input type="submit" value="Ajouter une photo" class="input-modal modal-trigger-ajout">
 				
 				
 			</div>
 		</div>
+		
 
-		<div id="demo" class="modal2">
+		<div class="modal-container-ajout">
 			<div class="modal_content">
 				<a href="#" class="modal_close">&times;</a>
-				<h2 class="titre-modal">Galerie photo</h2>
+				<h2 class="titre-modal">Ajout photo</h2>
 				
-				
-					<input type="button" value="Ajouter une photo" class="btn-showmodal-nework">
-				
-				
-			</div>
-		</div>
-
-
-		<!--<div class="modal-container-ajout">
-			<div class="overlay modal-trigger-ajout"></div>
-			<div class="modal2">
-				<button class="close-modal modal-trigger-ajout">x</button>
-				<button class="row-modal modal-trigger"><img src="assets/icons/arrow-left.png" alt=""></button>
-				<h3>Ajout photo</h3>
 				<div class="ajout-photo">
 					<div class="ajout-photo-before">
 						<img src="assets/icons/icone-photo.jpg">
@@ -106,9 +93,11 @@
 					</select>
 					<input type="submit" value="Valider" class="input-modal validation-photo">
 				</form>
+				
+				
+				
 			</div>
 		</div>
-	-->
 
 	</div>
 	

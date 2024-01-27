@@ -4,7 +4,7 @@ let filtresHtml = document.querySelector(".Filtres")
 let modeEditionHtml = document.querySelector(".bouton-modifier")
 let loginHtml = document.querySelector(".login")
 let logoutHtml = document.querySelector(".logout")
-let BtnmodalAdd = document.querySelector(".btn-showmodal-nework")
+let BtnmodalAdd = document.querySelector(".input-modal")
 let BtnModifierModal = document.querySelector(".btn-modifier-modal")
 const tokenExist = isTokenExist();
 let allWorks = []
@@ -16,7 +16,7 @@ function isConnected(){
         filtresHtml.style.display = "none"
         loginHtml.style.display = "none"
         logoutHtml.style.display = "flex"
-        BtnModifierModal.style.display = "block"
+        BtnModifierModal.style.display = "flex"
     }
 }
 function isDeconnected(){
@@ -165,7 +165,7 @@ const response = await fetch("http://localhost:5678/api/works", httpOptions);
 
 BtnmodalAdd.addEventListener("click",function(){
     document.querySelector(".modal").style.display="none"
-    document.querySelector(".modal2").style.display="flex"
+    document.querySelector(".modal-container-ajout").style.display="flex"
 })
 BtnModifierModal.addEventListener("click",function(){
     document.querySelector(".modal").style.display="flex"
