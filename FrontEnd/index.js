@@ -6,6 +6,10 @@ let loginHtml = document.querySelector(".login")
 let logoutHtml = document.querySelector(".logout")
 let BtnmodalAdd = document.querySelector(".input-modal")
 let BtnModifierModal = document.querySelector(".btn-modifier-modal")
+let IconeModifierModal = document.querySelector(".icone-modifier")
+let closeModalHtml = document.querySelector(".modal_close")
+let closeModalAjoutHtml = document.querySelector(".modal_close_ajout")
+const formNeWork = document.getElementById("formulaire-ajout");
 const tokenExist = isTokenExist();
 let allWorks = []
 
@@ -16,7 +20,7 @@ function isConnected(){
         filtresHtml.style.display = "none"
         loginHtml.style.display = "none"
         logoutHtml.style.display = "flex"
-        BtnModifierModal.style.display = "flex"
+        IconeModifierModal.style.display = "flex"
     }
 }
 function isDeconnected(){
@@ -27,7 +31,7 @@ function isDeconnected(){
         filtresHtml.style.display = "flex"
         loginHtml.style.display = "flex"
         logoutHtml.style.display = "none"
-        BtnModifierModal.style.display = "none"
+        IconeModifierModal.style.display = "none"
     }
 }
 logoutHtml.addEventListener("click", isDeconnected)
@@ -167,7 +171,107 @@ BtnmodalAdd.addEventListener("click",function(){
     document.querySelector(".modal").style.display="none"
     document.querySelector(".modal-container-ajout").style.display="flex"
 })
-BtnModifierModal.addEventListener("click",function(){
+IconeModifierModal.addEventListener("click",function(){
     document.querySelector(".modal").style.display="flex"
-    console.log("hello")
 })
+closeModalHtml.addEventListener("click",function(){
+    document.querySelector(".modal").style.display="none"
+    
+})
+closeModalAjoutHtml.addEventListener("click",function(){
+    document.querySelector(".modal-container-ajout").style.display="none"
+    
+})
+
+async function addWork(FormData) {
+    let userToken = window.localStorage.getItem("loginToken");
+    let bearer = "Bearer " + userToken;
+    let httpOptions = "";
+
+    if (userToken !== null) {
+        const headersContent = {
+            "Accept": "*/*",
+            "Authorization": bearer,
+        };
+        const headers = new Headers(headersContent);
+        httpOptions = {
+            method: "POST",
+            headers: headers,
+            body: FormData
+        };
+    }
+    
+const response = await fetch("http://localhost:5678/api/works", httpOptions);
+        console.log(response.status);
+        return response;
+       }
+
+
+       const ajouterPhotoBtn = document.getElementById("ajouterPhotoBtn");
+const inputPhoto = document.getElementById("inputPhoto");
+
+ajouterPhotoBtn.addEventListener("click", async function () {
+    inputPhoto.click();
+});
+
+inputPhoto.addEventListener("change", async function (event) {
+    const selectedFile = event.target.files[0];
+    const imageUrl = URL.createObjectURL(selectedFile);
+
+    if (selectedFile) {
+        document.querySelector(".validation-photo").style.disabled = false;
+        /* const imageURL = URL.createObjectURL(selectedFile);  */// Créer une URL locale pour le fichier
+        // Créer un élément d'image pour afficher la photo sélectionnée
+        const ajoutPhotoBefore = document.querySelector(".ajout-photo-before");
+        ajoutPhotoBefore.style.display = "none";
+        const ajoutPhotoAfter = document.querySelector(".ajout-photo-after");
+        ajoutPhotoAfter.style.display = "block";
+        const imageElement = document.createElement("img");
+        imageElement.src = imageUrl;
+        imageElement.classList.add("uploaded-image");
+        const inputPhoto = document.querySelector(".inputPhoto");
+        ajoutPhotoAfter.appendChild(imageElement);
+
+        let categoryId = 0;
+
+        selectCategorie.addEventListener("change", async function () {
+            const selectedCategoryId = parseInt(selectCategorie.value); // Convertir en nombre
+
+            if (!isNaN(selectedCategoryId)) {
+                categoryId = selectedCategoryId;
+            } else {
+                categoryId = ""; // Réinitialiser si la conversion échoue
+            }
+        });
+
+        formulairePhoto.addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            if (selectName.value === "" || selectCategorie.value === "") {
+                alert("Vous n'avez pas rempli tous les champs");
+            } else {
+                let imageName = selectedFile.name;
+                const newimageUrl = `http://localhost:5678/images/${imageName}`;
+                console.log(selectName.value);
+                console.log(selectCategorie.value);
+                console.log(newimageUrl);
+                let formData = new FormData(formulairePhoto);
+
+                formData.append("image", newimageUrl);
+                formData.append("title", selectName.value);
+                formData.append("category", parseInt(selectCategorie.value));
+
+                addWork(formData).then((res) => {
+                    alert("Image correctement ajoutée")
+                    if (res.status == 201) {
+                        getAllWorks().then((works) => {
+                            init(works);
+                        });
+                        window.location.reload();
+                    }
+                })
+            }
+            document.querySelector(".gallery").innerHTML = "";
+        })
+    }
+});

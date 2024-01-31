@@ -45,14 +45,15 @@
 		</article>
 	</section>
 	<section id="portfolio">
-		<div class="bouton2-modifier">
-		<h2>Mes Projets</h2>
+		
+		
 		<div class="btn-modifier-modal">
-			<i class="fa-regular fa-pen-to-square"></i>modifier
+			<h2>Mes Projets</h2>
+			<span class="icone-modifier"><i class="fa-regular fa-pen-to-square"></i>modifier</span>
 		</div>
 		<div class="modal">
 			<div class="modal_content">
-				<a href="#" class="modal_close">&times;</a>
+				<span class="modal_close">&times;</span>
 				<h2 class="titre-modal">Galerie photo</h2>
 				<div class="gallery-modal">
 				
@@ -67,7 +68,7 @@
 
 		<div class="modal-container-ajout">
 			<div class="modal_content">
-				<a href="#" class="modal_close">&times;</a>
+				<span class="modal_close_ajout">&times;</span>
 				<h2 class="titre-modal">Ajout photo</h2>
 				
 				<div class="ajout-photo">
@@ -81,7 +82,7 @@
 				</div>
 
 				
-				<form id="formPhoto" enctype="multipart/form-data" method="post">
+				<form id="formulaire-ajout" enctype="multipart/form-data" method="post">
 					<input type="file" name="image" id="inputPhoto" style="display: none" accept="image/png, image/jpeg" size="32000000" hidden required>
 					<label for="name">Titre</label>
 					<input type="text" name="name" id="nameModal" class="input-photo" autocomplete="photo">
@@ -103,7 +104,6 @@
 			</div>
 		</div>
 
-	</div>
 	
 		<div class="Filtres">
 			
