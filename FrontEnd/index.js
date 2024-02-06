@@ -145,11 +145,10 @@ function deleteToken(){
 
          
 async function addWork(FormData) {
-    let storedToken = window.localStorage.getItem("appToken");
-    let bearer = "Bearer " + storedToken;
+    let bearer = "Bearer " + userToken;
     let httpOptions = "";
 
-    if (storedToken !== null) {
+    if (userToken !== null) {
         const headersContent = {
             "Accept": "*/*",
             "Authorization": bearer,
@@ -184,6 +183,7 @@ closeModalAjoutHtml.addEventListener("click",function(){
 })
 
 async function addWork(FormData) {
+    console.log(FormData)
     let userToken = window.localStorage.getItem("loginToken");
     let bearer = "Bearer " + userToken;
     let httpOptions = "";
@@ -201,21 +201,22 @@ async function addWork(FormData) {
         };
     }
     
-const response = await fetch("http://localhost:5678/api/works", httpOptions);
+        const response = await fetch("http://localhost:5678/api/works", httpOptions);
         console.log(response.status);
         return response;
        }
 
 
-       const ajouterPhotoBtn = document.getElementById("ajouterPhotoBtn");
-const inputPhoto = document.getElementById("inputPhoto");
+        const ajouterPhotoBtn = document.getElementById("ajouterPhotoBtn");
+        const inputPhoto = document.getElementById("inputPhoto");
 
 ajouterPhotoBtn.addEventListener("click", async function () {
     inputPhoto.click();
 });
 
 inputPhoto.addEventListener("change", async function (event) {
-    const selectedFile = event.target.files[0];
+
+    let selectedFile = event.target.files[0];
     const imageUrl = URL.createObjectURL(selectedFile);
 
     if (selectedFile) {
@@ -234,8 +235,9 @@ inputPhoto.addEventListener("change", async function (event) {
 
         let categoryId = 0;
 
-        selectCategorie.addEventListener("change", async function () {
-            const selectedCategoryId = parseInt(selectCategorie.value); // Convertir en nombre
+    
+        categorieSelect.addEventListener("change", async function () {
+            const selectedCategoryId = parseInt(categorieSelect.value); // Convertir en nombre
 
             if (!isNaN(selectedCategoryId)) {
                 categoryId = selectedCategoryId;
@@ -244,30 +246,30 @@ inputPhoto.addEventListener("change", async function (event) {
             }
         });
 
-        formulairePhoto.addEventListener("submit", async function (e) {
+        formNeWork.addEventListener("submit", async function (e) {
             e.preventDefault();
 
-            if (selectName.value === "" || selectCategorie.value === "") {
+            if (selectName.value === "" || categorieSelect.value === "" || selectedFile == null) {
                 alert("Vous n'avez pas rempli tous les champs");
             } else {
                 let imageName = selectedFile.name;
                 const newimageUrl = `http://localhost:5678/images/${imageName}`;
                 console.log(selectName.value);
-                console.log(selectCategorie.value);
+                console.log(categorieSelect.value);
                 console.log(newimageUrl);
-                let formData = new FormData(formulairePhoto);
+                let formData = new FormData(formNeWork);
 
                 formData.append("image", newimageUrl);
                 formData.append("title", selectName.value);
-                formData.append("category", parseInt(selectCategorie.value));
+                formData.append("category", parseInt(categorieSelect.value));
 
                 addWork(formData).then((res) => {
                     alert("Image correctement ajoutée")
                     if (res.status == 201) {
                         getAllWorks().then((works) => {
-                            init(works);
+                            shoWorks(works)
                         });
-                        window.location.reload();
+                   
                     }
                 })
             }
