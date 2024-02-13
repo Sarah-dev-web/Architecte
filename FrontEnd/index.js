@@ -221,8 +221,6 @@ inputPhoto.addEventListener("change", async function (event) {
 
     if (selectedFile) {
         document.querySelector(".validation-photo").style.disabled = false;
-        /* const imageURL = URL.createObjectURL(selectedFile);  */// Créer une URL locale pour le fichier
-        // Créer un élément d'image pour afficher la photo sélectionnée
         const ajoutPhotoBefore = document.querySelector(".ajout-photo-before");
         ajoutPhotoBefore.style.display = "none";
         const ajoutPhotoAfter = document.querySelector(".ajout-photo-after");
@@ -237,12 +235,12 @@ inputPhoto.addEventListener("change", async function (event) {
 
     
         categorieSelect.addEventListener("change", async function () {
-            const selectedCategoryId = parseInt(categorieSelect.value); // Convertir en nombre
+            const selectedCategoryId = parseInt(categorieSelect.value);
 
             if (!isNaN(selectedCategoryId)) {
                 categoryId = selectedCategoryId;
             } else {
-                categoryId = ""; // Réinitialiser si la conversion échoue
+                categoryId = ""; 
             }
         });
 

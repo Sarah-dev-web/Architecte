@@ -121,10 +121,18 @@ nav ul {
 nav li {
 	padding: 0 10px;
 	font-size: 1.2em;
+	font-family: Work Sans;
+	font-size: 14px;
+	font-weight: 300;
+	line-height: 16px;
+	letter-spacing: 0em;
+	text-align: left;
+
 }
 
 li:hover {
-	color: #B1663C;
+	font-weight:bolder;
+	font-size:15px;
 }
 #introduction {
 	display: flex;
@@ -226,7 +234,14 @@ margin: auto;
 }
 
 #contact input {
-	height: 50px;
+	height: 36px;
+	font-size: 1.2em;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+#send {
+	height: 36px;
+	width: 179px;
 	font-size: 1.2em;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
