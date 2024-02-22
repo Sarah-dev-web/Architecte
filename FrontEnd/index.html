@@ -83,19 +83,18 @@
 
 				
 				<form id="formulaire-ajout" enctype="multipart/form-data" method="post">
-					<input type="file" name="image" id="inputPhoto" style="display: none" accept="image/png, image/jpeg" size="32000000" hidden required>
+					<input type="file" name="image" id="inputPhoto"  accept="image/png, image/jpeg" size="32000000" hidden >
 					<label for="name">Titre</label>
 					<input type="text" name="name" id="selectName" class="input-photo" autocomplete="photo">
 					<label for="categorieSelect">Catégorie</label>
 					<select name="categorieModal" id="categorieSelect" class="input-photo">
 						<option value=""></option>
-						<option value=0>Tous</option>
 						<option value=1>Objets</option>
 						<option value=2>Appartements</option>
 						<option value=3>Hôtels & restaurants</option>
 					</select>
 					<div class="modal-border2">
-					<input type="submit" value="Valider" class="input-modal validation-photo">
+					<input type="submit" value="Valider" class="input-modal2 validation-photo btn-grey">
 				</div>
 				</form>
 			

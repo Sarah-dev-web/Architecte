@@ -48,7 +48,6 @@ table {
 }
 /** end reset css**/
 body {
-	max-width: 1140px;
 	margin:auto;
 	font-family: 'Work Sans' ;
 	font-size: 14px;
@@ -64,6 +63,8 @@ header {
 	justify-content: space-between;
 	margin: 50px 0;
 	margin-top:30px;
+	padding-right: 150px;
+	padding-left: 150px;
 
 	.instagram{
 		width: 22px;
@@ -137,6 +138,8 @@ li:hover {
 #introduction {
 	display: flex;
 	align-items: center;
+	padding-right:230px;
+	padding-left: 230px;
 }
 #introduction figure {
 	flex: 1
@@ -166,11 +169,12 @@ li:hover {
 	margin-bottom: 1em;
 }
 .gallery {
-	width: 100%;
+	width: 70%;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-column-gap: 20px;
 	grid-row-gap: 20px;
+	padding-left: 277px;
 }
 .gallery-modal {
 	width: 80%;
@@ -254,12 +258,27 @@ margin: auto;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
 
-input[type="submit"]{
+.input-modal{
 	font-family: 'Syne';
 	font-weight: 700;
 	color: white;
+	margin : 2em auto ;
+	width: 180px;
+	height: 36px;
+	text-align: center;
+	border-radius: 60px ;
+	display: flex;
+    align-items: center;
+    justify-content: center;
 	background-color: #1D6154;
 	border: 1px solid #1D6154;
+
+	
+}
+.input-modal2{
+	font-family: 'Syne';
+	font-weight: 700;
+	color: white;
 	margin : 2em auto ;
 	width: 180px;
 	height: 36px;
@@ -360,7 +379,7 @@ footer nav ul {
 	
 	position: absolute;
 	top: 0;
-	bottom: -2490px;
+	bottom: -2840px;
 	left:0;
 	right: 0;
 	display: none;
@@ -610,4 +629,15 @@ footer{
 	margin:0;
 	padding:0;
 	
+}
+.img-gallery img{
+	width: 319px;
+	height: 427px;
+}
+.btn-grey{
+	background-color: gray;
+}
+.btn-green{
+	background-color: #1D6154;
+	border: 1px solid #1D6154;
 }

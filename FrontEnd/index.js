@@ -12,7 +12,7 @@ let closeModalAjoutHtml = document.querySelector(".modal_close_ajout")
 const formNeWork = document.getElementById("formulaire-ajout");
 const tokenExist = isTokenExist();
 let allWorks = []
-
+document.querySelector(".validation-photo").style.disabled = true;
 function isConnected(){
     if(tokenExist){
         console.log(modeEditionHtml)
@@ -59,7 +59,7 @@ function shoWorks(arrayOfWorks){
     let modalElementHtml = ""
     arrayOfWorks.forEach(work => {
         worksHtml += `
-        <figure>
+        <figure class="img-gallery">
 				<img src="${work.imageUrl}" alt="${work.title}">
 				<figcaption>${work.title}</figcaption>
 			</figure>
@@ -141,7 +141,17 @@ function deleteToken(){
     }
 }
 
-
+selectName.addEventListener("change",function(){
+    if (selectName.value.trim() != "" && categorieSelect.value != "") {
+        document.querySelector(".validation-photo").style.disabled = false;
+        document.querySelector(".validation-photo").classList.remove("btn-grey");
+        document.querySelector(".validation-photo").classList.add("btn-green");
+    } else{
+        document.querySelector(".validation-photo").style.disabled = true;
+        document.querySelector(".validation-photo").classList.add("btn-grey");
+        document.querySelector(".validation-photo").classList.remove("btn-green");
+    }
+})
 
          
 async function addWork(FormData) {
@@ -228,7 +238,6 @@ inputPhoto.addEventListener("change", async function (event) {
         const imageElement = document.createElement("img");
         imageElement.src = imageUrl;
         imageElement.classList.add("uploaded-image");
-        const inputPhoto = document.querySelector(".inputPhoto");
         ajoutPhotoAfter.appendChild(imageElement);
 
         let categoryId = 0;
@@ -242,14 +251,21 @@ inputPhoto.addEventListener("change", async function (event) {
             } else {
                 categoryId = ""; 
             }
+            if (selectName.value.trim() != "" && categorieSelect.value != "") {
+                document.querySelector(".validation-photo").style.disabled = false;
+                document.querySelector(".validation-photo").classList.remove("btn-grey");
+                document.querySelector(".validation-photo").classList.add("btn-green");
+            }else{
+                document.querySelector(".validation-photo").style.disabled = true;
+                document.querySelector(".validation-photo").classList.add("btn-grey");
+                document.querySelector(".validation-photo").classList.remove("btn-green");
+            }
         });
 
         formNeWork.addEventListener("submit", async function (e) {
             e.preventDefault();
 
-            if (selectName.value === "" || categorieSelect.value === "" || selectedFile == null) {
-                alert("Vous n'avez pas rempli tous les champs");
-            } else {
+            
                 let imageName = selectedFile.name;
                 const newimageUrl = `http://localhost:5678/images/${imageName}`;
                 console.log(selectName.value);
@@ -270,8 +286,14 @@ inputPhoto.addEventListener("change", async function (event) {
                    
                     }
                 })
-            }
-            document.querySelector(".gallery").innerHTML = "";
+            
+            document.querySelector(".modal").style.display="flex"
+            document.querySelector(".modal-container-ajout").style.display="none"
+            const ajoutPhotoBefore = document.querySelector(".ajout-photo-before");
+            ajoutPhotoBefore.style.display = "block";
+            const ajoutPhotoAfter = document.querySelector(".ajout-photo-after");
+            ajoutPhotoAfter.style.display = "none";
+            formNeWork.reset();
         })
     }
 });
