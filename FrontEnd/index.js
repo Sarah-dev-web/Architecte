@@ -9,6 +9,7 @@ let BtnModifierModal = document.querySelector(".btn-modifier-modal")
 let IconeModifierModal = document.querySelector(".icone-modifier")
 let closeModalHtml = document.querySelector(".modal_close")
 let closeModalAjoutHtml = document.querySelector(".modal_close_ajout")
+let Arrowhtml = document.querySelector(".fa-arrow-left")
 const formNeWork = document.getElementById("formulaire-ajout");
 const tokenExist = isTokenExist();
 let allWorks = []
@@ -191,7 +192,10 @@ closeModalAjoutHtml.addEventListener("click",function(){
     document.querySelector(".modal-container-ajout").style.display="none"
     
 })
-
+Arrowhtml.addEventListener("click",function(){
+    document.querySelector(".modal").style.display="flex"
+    document.querySelector(".modal-container-ajout").style.display="none"
+})
 async function addWork(FormData) {
     console.log(FormData)
     let userToken = window.localStorage.getItem("loginToken");
@@ -234,7 +238,7 @@ inputPhoto.addEventListener("change", async function (event) {
         const ajoutPhotoBefore = document.querySelector(".ajout-photo-before");
         ajoutPhotoBefore.style.display = "none";
         const ajoutPhotoAfter = document.querySelector(".ajout-photo-after");
-        ajoutPhotoAfter.style.display = "block";
+        ajoutPhotoAfter.style.display = "flex";
         const imageElement = document.createElement("img");
         imageElement.src = imageUrl;
         imageElement.classList.add("uploaded-image");
@@ -290,7 +294,7 @@ inputPhoto.addEventListener("change", async function (event) {
             document.querySelector(".modal").style.display="flex"
             document.querySelector(".modal-container-ajout").style.display="none"
             const ajoutPhotoBefore = document.querySelector(".ajout-photo-before");
-            ajoutPhotoBefore.style.display = "block";
+            ajoutPhotoBefore.style.display = "flex";
             const ajoutPhotoAfter = document.querySelector(".ajout-photo-after");
             ajoutPhotoAfter.style.display = "none";
             formNeWork.reset();

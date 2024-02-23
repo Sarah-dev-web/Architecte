@@ -244,11 +244,19 @@ margin: auto;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
 #send {
-	height: 36px;
+	color: white;
 	width: 179px;
-	font-size: 1.2em;
-	border: none;
-	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	text-align: center;
+	border-radius: 60px ;
+	display: flex;
+    align-items: center;
+    justify-content: center;
+	background-color: #1D6154;
+	margin-top: 40px;
+}
+.btn-align{
+	display: flex;
+	justify-content: center;
 }
 #contact label {
 	margin: 2em 0 1em 0;
@@ -378,10 +386,10 @@ footer nav ul {
 	
 	
 	position: absolute;
-	top: 0;
+	/*top: 0;
 	bottom: -2840px;
 	left:0;
-	right: 0;
+	right: 0; */
 	display: none;
 	justify-content: center;
 	align-items: center;
@@ -411,13 +419,15 @@ footer nav ul {
 	position: relative;
 	top:-740px;
 	background-color: white;
+	left: 480px;
+    top: -170px;
 	
 
 }
 .modal_close, .modal_close_ajout {
 	text-decoration: none;
 	position: absolute;
-	top:15px;
+	top:26px;
 	right: 30px;
 	font-size: 24px;
 	color: #000000;
@@ -508,10 +518,10 @@ footer nav ul {
 
 .modal-container-ajout {
 	position: absolute;
-	top: 0;
+	/*top: 0;
 	bottom: -2490px;
 	left:0;
-	right: 0;
+	right: 0;*/
 	display: none;
 	justify-content: center;
 	align-items: center;
@@ -640,4 +650,12 @@ footer{
 .btn-green{
 	background-color: #1D6154;
 	border: 1px solid #1D6154;
+}
+
+.fa-arrow-left{
+	position:absolute;
+    left: 30px;
+	top:26px;
+	font-size: 21px;
+	cursor: pointer;
 }
