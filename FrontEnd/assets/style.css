@@ -49,14 +49,11 @@ table {
 /** end reset css**/
 body {
 	margin:auto;
-	font-family: 'Work Sans' ;
+	font-family: 'Work Sans';
 	font-size: 14px;
-
-	&.main-color{
-		background-color: #FFFEF8;
-	}
-	
-	
+}
+.main-color{
+	background-color: #FFFEF8;
 }
 header {
 	display: flex;
@@ -65,11 +62,10 @@ header {
 	margin-top:30px;
 	padding-right: 150px;
 	padding-left: 150px;
-
-	.instagram{
-		width: 22px;
-		cursor: pointer;
-	}
+}
+.instagram{
+	width: 22px;
+	cursor: pointer;
 }
 section {
 	margin: 50px 0
@@ -337,33 +333,27 @@ footer nav ul {
 .black-background{
 	background-color: black;
 	height: 60px;
-	
-		& .white-color{
-			color: white;
-			padding-top:25px;
-		}
-		
-	
+}
+.bouton-modifier .white-color{
+	color: white;
+	padding-top:25px;
 }
 .bouton-modifier{
 	display: none;
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
-
-		& a{
-			position: relative;
-			bottom: 10px;
-			text-decoration: none;
-			color: black;
-			font-family: 'Work Sans';
-			font-size: 25px;
-			padding-left: 30px;
-			margin-bottom: 5px;
-		}
-	
 }
 
+.bouton-modifier a{
+	position: relative;
+	bottom: 10px;
+	text-decoration: none;
+	font-family: 'Work Sans';
+	font-size: 25px;
+	padding-left: 30px;
+	margin-bottom: 5px;
+}
 .btn-modifier-modal{
 	display: flex;
 	justify-content: center;
@@ -394,15 +384,13 @@ footer nav ul {
 	justify-content: center;
 	align-items: center;
 	background-color: rgba(77, 77, 77, 0.1);
-
-	.input-modal {
-		width: 236px;
-		height: 36px;
-		margin-bottom: 23px;
-		margin-top: 38px;
-	}
 }
-
+.input-modal {
+	width: 236px;
+	height: 36px;
+	margin-bottom: 23px;
+	margin-top: 38px;
+}
 .modal:target{
 	visibility: visible;
 	opacity: 1;
@@ -473,48 +461,25 @@ footer nav ul {
 	width: 100vw;
 	height: 100vh;
 	transition: visibility 0.4s;
-	.tri-photos{
-		padding: 46px 0px;
-		border-bottom: 1px solid #B3B3B3;
-		display: grid;
-		grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-		gap: 5px;
-		img {
-			height: 102px;
-			width: 76px;
-		}
-		p {
-			font-size: 14px;
-		}
-		i {
-			position: absolute;
-			left: 55px;
-			bottom: 94px;
-			color: black;
-			background-color: white;
-			cursor: pointer;
-		}
-	}
-	.supprimer-photos {
-		font-family: 'Syne';
-		text-decoration: none;
-		color: #D65353;
-		cursor: pointer;
-	}
 }
+
+
+
 .modal-container.active{
 	visibility: visible;
-	.overlay{
-		opacity: 30%;
-		transition: opacity 0.4s ease-out;
-	}
-	.modal {
-		opacity: 1;
-		transform: translate(-50%, -50%);
-		transition: opacity 0.4s 0.2s ease-out,
-		transform 0.4s 0.2s ease-out;
-	}
+
 }
+.modal-container.active .overlay {
+    opacity: 0.3; /* 30% en tant que valeur décimale */
+    transition: opacity 0.4s ease-out;
+}
+
+.modal-container.active .modal {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.4s 0.2s ease-out, transform 0.4s 0.2s ease-out;
+}
+
 
 .modal-container-ajout {
 	position: absolute;
@@ -526,83 +491,93 @@ footer nav ul {
 	justify-content: center;
 	align-items: center;
 	background-color: rgba(77, 77, 77, 0.1);
-	.row-modal{
-		padding: 8px 10px;
-		border: none;
-		font-size: 24px;
-		background-color: #FFFEF8;
-		position: absolute;
-		top: -3px;
-		left: 24px;
-		cursor: pointer;
-	}
-	.ajout-photo-before {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		height: 169px;
-		width: 420px;
-		background-color: #E8F1F6;
-		margin-top: 36px;
-	}
-	.ajout-photo-after {
-		display: none;
-		img {
-			height: 169px;
-		}
-	}
-	img {
-		margin-top: 22px;
-		font-size: 58px;
-	}
-	#ajouterPhotoBtn {
-		background-color: #CBD6DC;
-		color: #306685;
-		height: 36px;
-		width: 173px;
-		font-size: 14px;
-		border: none;
-		border-radius: 50px;
-		cursor: pointer;
-	}
-	#ajouterPhotoBtn:hover {
-		background-color: #0056b3;
-	}
-	p {
-		font-size: 10px;
-	}
-	form {
-		display: flex;
-		flex-direction: column;
-		gap: 21px;
-		text-align: left;
-		margin-top:30px;
-	}
-	.input-photo {
-		width: 420px;
-		height: 51px;
-		box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
-		border: none;
-	}
-	label{
-		font-family: 'Work Sans';
-		font-size: 14px;
-		font-weight: 500;
-	}
-	
 }
+.modal-container-ajout .row-modal {
+    padding: 8px 10px;
+    border: none;
+    font-size: 24px;
+    background-color: #FFFEF8;
+    position: absolute;
+    top: -3px;
+    left: 24px;
+    cursor: pointer;
+}
+
+.modal-container-ajout .ajout-photo-before {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 169px;
+    width: 420px;
+    background-color: #E8F1F6;
+    margin-top: 36px;
+}
+
+.modal-container-ajout .ajout-photo-after {
+    display: none;
+}
+
+.modal-container-ajout .ajout-photo-after img {
+    height: 169px;
+}
+
+.modal-container-ajout img {
+    margin-top: 22px;
+    font-size: 58px;
+}
+
+.modal-container-ajout #ajouterPhotoBtn {
+    background-color: #CBD6DC;
+    color: #306685;
+    height: 36px;
+    width: 173px;
+    font-size: 14px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+.modal-container-ajout #ajouterPhotoBtn:hover {
+    background-color: #0056b3;
+}
+
+.modal-container-ajout p {
+    font-size: 10px;
+}
+
+.modal-container-ajout form {
+    display: flex;
+    flex-direction: column;
+    gap: 21px;
+    text-align: left;
+    margin-top: 30px;
+}
+
+.modal-container-ajout .input-photo {
+    width: 420px;
+    height: 51px;
+    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+    border: none;
+}
+
+.modal-container-ajout label {
+    font-family: 'Work Sans';
+    font-size: 14px;
+    font-weight: 500;
+}
+
 .modal-container-ajout.active{
 	visibility: visible;
-	.overlay{
-		opacity: 30%;
-		transition: opacity 0.4s ease-out;
-	}
-	.modal {
-		opacity: 1;
-		transform: translate(-50%, -50%);
-		transition: opacity 0.4s 0.2s ease-out,
-		transform 0.4s 0.2s ease-out;
-	}
+}
+.modal-container-ajout.active .overlay {
+    opacity: 0.3; /* Utilisez une valeur décimale entre 0 et 1 */
+    transition: opacity 0.4s ease-out;
+}
+
+.modal-container-ajout.active .modal {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.4s ease-out 0.2s, transform 0.4s ease-out 0.2s; /* Ajoutez la durée et le délai pour chaque transition */
 }
 
 .overlay {
@@ -646,6 +621,7 @@ footer{
 }
 .btn-grey{
 	background-color: gray;
+	border: none;
 }
 .btn-green{
 	background-color: #1D6154;
@@ -658,4 +634,7 @@ footer{
 	top:26px;
 	font-size: 21px;
 	cursor: pointer;
+}
+.edit-mode{
+	padding-right: 10px;
 }

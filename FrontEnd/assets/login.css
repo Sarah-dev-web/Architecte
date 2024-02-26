@@ -31,14 +31,11 @@ table {
 /** end reset css**/
 body {
 	margin:auto;
-	font-family: 'Work Sans' ;
+	font-family: 'Work Sans';
 	font-size: 14px;
-
-	&.main-color{
-		background-color: #FFFEF8;
-	}
-	
-	
+}
+.main-color{
+	background-color: #FFFEF8;
 }
 
 header {
@@ -49,10 +46,10 @@ header {
 	padding-right: 150px;
 	padding-left: 150px;
 
-	.instagram{
-		width: 22px;
-		cursor: pointer;
-	}
+}
+.instagram{
+	width: 22px;
+	cursor: pointer;
 }
 section {
 	margin: 50px 0
@@ -157,12 +154,12 @@ li:hover {
 #Login {
 	width: 50%;
 	margin: auto;
-	& a{
-		color: black;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
+}
+.mdp{
+	color: black;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 #Login > * {
 	text-align: center;
