@@ -81,7 +81,7 @@ function shoWorks(arrayOfWorks){
 function showCategories(arrayOfCategories){
     let categoriesHtml = ""
     categoriesHtml = `
-        <button class="boutons-filtres btn-actif">Tous</button>
+        <button class="boutons-filtres">Tous</button>
         `
     arrayOfCategories.forEach(cat => {
         categoriesHtml += `
