@@ -3,7 +3,26 @@
    v2.0 | 20110126
    License: none (public domain)
 */
-
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
@@ -38,24 +57,12 @@ body {
 	background-color: #FFFEF8;
 }
 
-header {
-	display: flex;
-	justify-content: space-between;
-	margin: 50px 0;
-	margin-top:30px;
-	padding-right: 150px;
-	padding-left: 150px;
-
-}
-.instagram{
-	width: 22px;
-	cursor: pointer;
-}
+/** Général css**/
 section {
 	margin: 50px 0
 }
 main{
-	margin-bottom: 180px;
+	margin-bottom: 280px;
 }
 
 h1{
@@ -97,12 +104,38 @@ h2{
 	color: #1D6154
 }
 
+
+		/* Navbar */
+header {
+	display: flex;
+	justify-content: space-between;
+	margin: 50px 0;
+	margin-top:30px;
+	padding-right: 150px;
+	padding-left: 150px;
+
+}
+.login a{
+	text-decoration: none;
+	cursor: pointer;
+	color: black;
+}
+.logout{
+	display: none;
+	cursor: pointer;
+}
+.login{
+	display: block;
+}
+.instagram{
+	width: 22px;
+	cursor: pointer;
+}
+
 nav ul {
 	display: flex;
 	align-items: center;
 	list-style-type: none;
-	
-
 }
 nav li {
 	padding: 0 10px;
@@ -110,47 +143,12 @@ nav li {
 }
 
 li:hover {
-	color: #B1663C;
-}
-#introduction {
-	display: flex;
-	align-items: center;
-}
-#introduction figure {
-	flex: 1
-}
-#introduction img {
-	display: block;
-	margin: auto;
-	width: 80%;
-}
+		font-weight:bold;
+		cursor: pointer;
+	}
 
-#introduction article {
-	flex: 1
-}
-#introduction h2 {
-	margin-bottom: 1em;
-}
 
-#introduction p {
-	margin-bottom: 0.5em;
-}
-#portfolio h2 {
-	text-align: center;
-	margin-bottom: 1em;
-}
-.gallery {
-	width: 100%;
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
-	grid-column-gap: 20px;
-	grid-row-gap: 20px;
-}
-
-.gallery img {
-	width: 100%;
-
-}
+	/* Formulaire de connexion*/
 #Login {
 	width: 50%;
 	margin: auto;
@@ -189,8 +187,6 @@ li:hover {
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
 
-
-
 input[type="submit"]{
 	font-family: 'Syne';
 	font-weight: 700;
@@ -202,6 +198,8 @@ input[type="submit"]{
 	border-radius: 60px ;
 }
 
+
+		/* Footer */
 footer nav ul {
 	display: flex;
 	justify-content: flex-end;
@@ -212,18 +210,17 @@ footer nav ul {
 }
 footer{
 	width: 100%;
+	margin:0;
+	padding:0;
 	
 }
 
-.login a{
-	text-decoration: none;
-	cursor: pointer;
-	color: black;
-}
-.logout{
-	display: none;
-	cursor: pointer;
-}
-.login{
-	display: block;
+.mention{
+	font-family: Work Sans;
+	font-size: 14px;
+	font-weight: 300;
+	line-height: 16px;
+	letter-spacing: 0em;
+	text-align: left;
+
 }
