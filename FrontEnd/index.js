@@ -78,27 +78,46 @@ function shoWorks(arrayOfWorks){
     
 }
 
-function showCategories(arrayOfCategories){
-    let categoriesHtml = ""
-    categoriesHtml = `
-        <button class="boutons-filtres">Tous</button>
-        `
-    arrayOfCategories.forEach(cat => {
-        categoriesHtml += `
-        <button class="boutons-filtres">${cat.name}</button>
-        `
-    });
-    filtresHtml.innerHTML = categoriesHtml
-    let boutonsFiltresHtml = document.querySelectorAll(".boutons-filtres")
-    boutonsFiltresHtml.forEach((btn,index)=>{
-        btn.addEventListener("click",function(e){
-            let filtersWorks = allWorks.filter(wk=>wk.categoryId == index)
-            shoWorks(filtersWorks)
-            console.log(filtersWorks)
-        })
-    })
 
+
+function showCategories(arrayOfCategories) {
+    let categoriesHtml = `<button class="boutons-filtres active" data-category-id="all">Tous</button>`;
+    
+    arrayOfCategories.forEach(cat => {
+        categoriesHtml += `<button class="boutons-filtres" data-category-id="${cat.id}">${cat.name}</button>`;
+    });
+
+    filtresHtml.innerHTML = categoriesHtml;
+    let boutonsFiltresHtml = document.querySelectorAll(".boutons-filtres");
+
+    boutonsFiltresHtml.forEach((btn, index) => {
+        btn.addEventListener("click", function (e) {
+            // Retirez la classe active de tous les boutons
+            boutonsFiltresHtml.forEach(btn => {
+                btn.classList.remove("active");
+            });
+
+            // Ajoutez la classe active au bouton actuellement cliqué
+            btn.classList.add("active");
+
+            // Le reste du code pour le filtrage des projets reste inchangé
+            let categoryId = btn.getAttribute("data-category-id");
+
+            if (categoryId === "all") {
+                getAllWorks().then((works) => {
+                    shoWorks(works);
+                });
+            } else {
+                let filtersWorks = allWorks.filter(wk => wk.categoryId == categoryId);
+                shoWorks(filtersWorks);
+            }
+        });
+    });
 }
+
+
+
+
 
 function deleteWorkbyId(workid){
     let userToken = window.localStorage.getItem("loginToken");

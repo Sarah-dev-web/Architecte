@@ -271,10 +271,12 @@ li:hover {
     min-width: 100px;
     padding-left: 10px;
     padding-right: 10px;
-
-	
 }
 
+.boutons-filtres.active {
+    background-color: #1D6154;
+    color: #ffffff;
+}
 
 
 		/* CSS Modales */
