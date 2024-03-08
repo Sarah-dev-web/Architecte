@@ -97,10 +97,8 @@ function showCategories(arrayOfCategories) {
                 btn.classList.remove("active");
             });
 
-            // Ajoutez la classe active au bouton actuellement cliqué
             btn.classList.add("active");
 
-            // Le reste du code pour le filtrage des projets reste inchangé
             let categoryId = btn.getAttribute("data-category-id");
 
             if (categoryId === "all") {
@@ -291,9 +289,7 @@ inputPhoto.addEventListener("change", async function (event) {
             
                 let imageName = selectedFile.name;
                 const newimageUrl = `http://localhost:5678/images/${imageName}`;
-                console.log(selectName.value);
-                console.log(categorieSelect.value);
-                console.log(newimageUrl);
+              
                 let formData = new FormData(formNeWork);
 
                 formData.append("image", newimageUrl);
